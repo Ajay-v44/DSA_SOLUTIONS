@@ -23,6 +23,8 @@ public class Anagram {
             return false;
         }
 //        BruteForce Or Native Approach
+//        Time Complexity - O(n^2)
+//        Space Complexity - O(1)
         boolean isAnagram = true;
         HashMap<Integer,Character> isVisited = new HashMap<>();
 
