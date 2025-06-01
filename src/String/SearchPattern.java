@@ -10,6 +10,7 @@ public class SearchPattern {
         String str = sc.next();
         String pattern = sc.next();
         System.out.println(findPatterns(str, pattern));
+        System.out.println(searchPatternGFG(str, pattern));
 
     }
 
@@ -35,7 +36,7 @@ public class SearchPattern {
         return lst;
     }
 
-    public int strStr(String s1, String pattern) {
+    public int findPatternLC(String s1, String pattern) {
 /*        leetcode 28
 
 28. Find the Index of the First Occurrence in a String
@@ -55,5 +56,52 @@ public class SearchPattern {
             ptl++;
         }
         return -1;
+    }
+//    KMP Algorithm
+    static void constructLPS(String pat,int[] lps){
+        int len=0;
+        lps[0]=0;
+        int i=1;
+        while(i<pat.length()){
+            if(pat.charAt(i)==pat.charAt(len)){
+                len++;
+                lps[i]=len;
+                i++;
+            }else{
+                if(len!=0){
+                    len=lps[len-1];
+                }else{
+                    lps[i]=0;
+                    i++;
+                }
+            }
+        }
+    }
+    static ArrayList<Integer> searchPatternGFG(String str, String pattern) {
+        ArrayList<Integer> res=new ArrayList<>();
+        int n=str.length();
+        int m=pattern.length();
+        int[] lps=new int[m];
+        constructLPS(pattern,lps);
+        int i=0;
+        int j=0;
+        while(i<n){
+            if(str.charAt(i)==pattern.charAt(j)){
+                i++;
+                j++;
+                if(j==m){
+                    res.add(i-j);
+                    j=lps[j-1];
+                }
+            }else{
+                if(j!=0){
+                    j=lps[j-1];
+                }else{
+                    i++;
+                }
+            }
+        }
+
+        return res;
     }
 }
