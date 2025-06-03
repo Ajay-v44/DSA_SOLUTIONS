@@ -5,25 +5,41 @@ import utils.ScannerUtil;
 
 public class MinChars {
     public static void main(String[] args) {
-        ScannerUtil obj=new ScannerUtil();
-        String str= obj.getAStringInput();
-        System.out.println(findCharactersToAdd(str));
+        ScannerUtil obj = new ScannerUtil();
+        String str = obj.getAStringInput();
+        System.out.println(minChar(str));
     }
-    static int findCharactersToAdd(String s1){
-        int number=0;
-        StringBuilder sb=new StringBuilder(s1);
-        if(sb.toString().contentEquals(sb.reverse())){
-            return 0;
-        }
-        int i=sb.length()-1;
-        while (i>0){
-            number+=1;
-            sb.insert(0,sb.charAt(i));
-            if(sb.toString().contentEquals(sb.reverse())){
-                break;
+
+    static int[] computeLPSArray(String pat) {
+        int n = pat.length();
+        int[] lps = new int[n];
+        lps[0] = 0;
+        int len = 0;
+
+        int i = 1;
+        while (i < n) {
+            if (pat.charAt(i) == pat.charAt(len)) {
+                len++;
+                lps[i] = len;
+                i++;
+            } else {
+                if (len != 0) {
+                    len = lps[len - 1];
+                } else {
+                    lps[i] = 0;
+                    i++;
+                }
             }
-            i--;
         }
-        return number;
+        return lps;
+    }
+
+    public static int minChar(String s) {
+        // Write your code here
+        int n = s.length();
+        String rev = new StringBuilder(s).reverse().toString();
+        s = s + "$" + rev;
+        int[] lps = computeLPSArray(s);
+        return (n - lps[lps.length - 1]);
     }
 }
