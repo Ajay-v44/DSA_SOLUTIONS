@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class SortZeroAndOne {
     public static void main(String[] args) {
         int[] arr = {0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1};
-        System.out.println(Arrays.toString(sortInAscendingOrderBF(arr)));
+        System.out.println(Arrays.toString(sortInAscendingOrder(arr)));
     }
 
     static int[] sortInAscendingOrderBF(int[] arr) {
@@ -25,25 +25,29 @@ Space Complexity-O(1)
     }
 
     static int[] sortInAscendingOrder(int[] arr) {
-        int left = 0;
-        int right = 1;
-        int length = arr.length - 1;
-        if (length <= 0) {
-            return arr;
-        }
-        while (length > 0) {
-            if (arr[left] > arr[right]) {
-                int swap = arr[left];
-                arr[left++] = arr[right];
-                arr[right++] = swap;
+//        Dutch Flag Algorithm
+//        O(n) Time Complexity
+//        O(1) Space Complexity
+        int lo = 0, mid = 0;
+        int hi = arr.length - 1;
+        while (mid <= hi) {
+            if (arr[mid] == 0) {
+                swap(arr,mid,lo);
+                lo++;
+                mid++;
+            } else if (arr[mid] == 2) {
+                swap(arr, mid, hi);
+                hi--;
             } else {
-                if (arr[left] == arr[right]) {
-
-                }
+                mid++;
             }
-            length--;
         }
-
         return arr;
+    }
+
+    static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
