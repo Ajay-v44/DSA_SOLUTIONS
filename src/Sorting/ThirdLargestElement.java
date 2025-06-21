@@ -7,6 +7,10 @@ public class ThirdLargestElement {
     }
 
     static int findThirdLargestElement(int[] arr) {
+        /*
+        Time Complexity - O(n)
+        Space Complexity - O(1)
+         */
         Integer first = null;
         Integer second = null;
         Integer third = null;
