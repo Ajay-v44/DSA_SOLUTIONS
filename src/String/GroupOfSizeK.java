@@ -8,33 +8,27 @@ public class GroupOfSizeK {
        String s = "abcdefghi";
        int k = 3;
        char fill = 'x';
-        System.out.println(divideAString(s, k, fill));
+        System.out.println(Arrays.toString(divideAString(s, k, fill)));
     }
-    static ArrayList<String> divideAString(String str, int k, char fill){
+    static String[] divideAString(String str, int k, char fill){
+        if (str==null||str.isEmpty()){
+            return new String[0];
+        }
         ArrayList<String> result= new ArrayList<>();
-        int inc=0;
         StringBuilder temp= new StringBuilder();
         for(char c :str.toCharArray()){
-            System.out.println(inc);
-            if (inc==k){
-                System.out.println(temp);
-                result.add(temp.toString());
-                inc=0;
-                temp = new StringBuilder();
-//                continue;
-            }
             temp.append(c);
-            inc++;
-
-        }
-        if(result.get(-1).length()<k){
-            int rem=k-result.get(-1).length();
-            StringBuilder item= new StringBuilder(result.get(-1));
-            for (int num=0;num<rem;num++){
-                item.append(fill);
+            if(temp.length()==k){
+                result.add(temp.toString());
+                temp=new StringBuilder();
             }
-            result.add(-1, String.valueOf(item));
         }
-        return result;
+        if(!temp.isEmpty()) {
+            while (temp.length() < k) {
+                temp.append(k);
+            }
+            result.add(temp.toString());
+        }
+        return result.toArray(new String[0]);
     }
 }
