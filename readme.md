@@ -108,5 +108,4 @@ Let's connect and learn together!
   </p>
 
 ---
-
 <p align="center">Made with ❤️ and a lot of caffeine! ☕</p>
