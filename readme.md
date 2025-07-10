@@ -1,4 +1,3 @@
-
 <div align="center">
   <img src="https://media3.giphy.com/media/aUovxH8Vf9qDu/giphy.gif" alt="Coding GIF" width="600"/>
 </div>
