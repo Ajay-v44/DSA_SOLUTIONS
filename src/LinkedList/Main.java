@@ -11,6 +11,7 @@ public class Main {
         obj.printLinkedList();
         obj.deleteNode(0);
         obj.deleteNode(2);
+        obj.head=obj.reverseLinkedList(obj.head);
         obj.printLinkedList();
     }
 }
