@@ -7,6 +7,7 @@ public class Main {
         obj.insertAtBeginning(10);
         obj.insertAtEnd(50);
         obj.insertAtParticularPosition(510,0);
+        obj.searchNode(51);
         obj.printLinkedList();
         obj.deleteNode(0);
         obj.deleteNode(2);

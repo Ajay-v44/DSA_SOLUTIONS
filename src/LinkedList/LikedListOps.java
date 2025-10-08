@@ -92,4 +92,25 @@ public class LikedListOps {
         temp.next=temp.next.next;
 
     }
+
+//    Search Node
+    public void searchNode(int data){
+        if(head==null) {
+            System.out.println("The LikedList Is Empty");
+            return;
+        }
+        if(head.data==data) {
+            System.out.println("Data Found At  Head");
+            return;
+        }
+        Node temp=head.next;
+        while (temp!=null){
+            if(temp.data==data){
+                System.out.println("Data Found");
+                return;
+            }
+            temp=temp.next;
+        }
+        System.out.println("Not Found In Linked List");
+    }
 }
