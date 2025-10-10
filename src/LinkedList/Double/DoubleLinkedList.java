@@ -63,7 +63,7 @@ public class DoubleLinkedList {
                 if (tempTail.prev == null)
                     System.out.println(tempTail.data);
                 else
-                    System.out.println(tempTail.data + " =>");
+                    System.out.print(tempTail.data + " =>");
                 tempTail = tempTail.prev;
             }
         }

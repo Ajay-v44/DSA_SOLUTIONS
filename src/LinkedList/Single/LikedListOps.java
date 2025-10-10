@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedList.Single;
 
 public class LikedListOps {
     Node head = null;

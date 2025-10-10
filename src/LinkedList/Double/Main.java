@@ -19,5 +19,6 @@ public class Main {
         obj.deleteNode(Position.Tail,java.util.Optional.empty());
         obj.deleteNode(Position.Head,Optional.of(2));
         obj.printNodes(Position.Head);
+        obj.printNodes(Position.Tail);
     }
 }
