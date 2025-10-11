@@ -17,5 +17,6 @@ public class Main {
         obj.deleteNode(Position.Head, Optional.of(3));
         obj.printLinkedList();
         obj.searchNode(13);
+        System.out.println(obj.returnTheMedian());
     }
 }

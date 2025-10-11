@@ -103,7 +103,7 @@ public class CicularLkstOps {
     //    Search A Data
     public void searchNode(int data) {
         boolean isFound = false;
-        int idx=0;
+        int idx = 0;
         if (head != null) {
             Node temp = head;
             while (temp != null) {
@@ -118,7 +118,19 @@ public class CicularLkstOps {
         if (!isFound) {
             System.out.println("Element Is Not Present Here");
         } else {
-            System.out.println("Element Found At "+idx+" Position");
+            System.out.println("Element Found At " + idx + " Position");
         }
+    }
+
+    //    find the median
+    public int returnTheMedian() {
+//        the middle element of a linked list
+        Node headTemp = head;
+        Node tailTemp = tail;
+        while (headTemp!=tailTemp&&headTemp.next != tailTemp) {
+            headTemp = headTemp.next;
+            tailTemp = tailTemp.prev;
+        }
+        return headTemp.data;
     }
 }
