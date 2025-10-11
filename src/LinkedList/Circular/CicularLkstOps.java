@@ -99,4 +99,26 @@ public class CicularLkstOps {
         System.out.println();
 
     }
+
+    //    Search A Data
+    public void searchNode(int data) {
+        boolean isFound = false;
+        int idx=0;
+        if (head != null) {
+            Node temp = head;
+            while (temp != null) {
+                if (temp.data == data) {
+                    isFound = true;
+                    break;
+                }
+                temp = temp == tail ? null : temp.next;
+                idx++;
+            }
+        }
+        if (!isFound) {
+            System.out.println("Element Is Not Present Here");
+        } else {
+            System.out.println("Element Found At "+idx+" Position");
+        }
+    }
 }

@@ -16,5 +16,6 @@ public class Main {
         obj.printLinkedList();
         obj.deleteNode(Position.Head, Optional.of(3));
         obj.printLinkedList();
+        obj.searchNode(13);
     }
 }
