@@ -11,7 +11,7 @@ public class Main {
         obj3.next = obj4;
         obj4.next = obj2;
         CycleInLinkeList lst = new CycleInLinkeList();
-        System.out.println(lst.hasCycle(obj));
+        System.out.println(lst.hasCycleOpt(obj));
 
     }
 }
