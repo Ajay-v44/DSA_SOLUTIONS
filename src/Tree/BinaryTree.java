@@ -27,6 +27,15 @@ public class BinaryTree {
 
     }
 
+    public static int findDepth(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int countLeft = findDepth(node.left);
+        int countRight = findDepth(node.right);
+        return 1 + Math.max(countRight, countLeft);
+    }
+
     public static void main(String[] args) {
 
         // The structure to be created:
@@ -35,6 +44,7 @@ public class BinaryTree {
         //     2   3
         //    / \   \
         //   4   5   6
+
 
         Node root = new Node(1);
         root.left = new Node(2);
@@ -53,5 +63,7 @@ public class BinaryTree {
         System.out.println();
 //      452631
         postOrderTraversal(root);
+        System.out.println();
+        System.out.println(findDepth(root));
     }
 }
