@@ -1,6 +1,18 @@
 package Tree;
 
 public class BinaryTree {
+    public static int idx=-1;
+
+    public static  Node buildBinaryTree(int[] nodes){
+        idx++;
+        if (nodes[idx]==-1)
+            return null;
+        Node newNode=new Node(nodes[idx]);
+        newNode.left=buildBinaryTree(nodes);
+        newNode.right=buildBinaryTree(nodes);
+        return newNode;
+    }
+
     public static void preOrderTraversal(Node node) {
         if (node == null)
             return;
@@ -45,15 +57,15 @@ public class BinaryTree {
         //    / \   \
         //   4   5   6
 
-
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-
-        root.right.right = new Node(6);
+        int[] nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
+        Node root = buildBinaryTree(nodes);
+//        root.left = new Node(2);
+//        root.right = new Node(3);
+//
+//        root.left.left = new Node(4);
+//        root.left.right = new Node(5);
+//
+//        root.right.right = new Node(6);
 //        1,2,4,5,3,6
         preOrderTraversal(root);
         System.out.println();
