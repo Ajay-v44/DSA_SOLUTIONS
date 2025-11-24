@@ -1,10 +1,11 @@
 package Graph;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class GraphUtil {
-    static class Edge {
+    public static class Edge {
         int source;
         int destination;
         int weight;
@@ -29,7 +30,44 @@ public class GraphUtil {
         graph[0].add(new Edge(0, 2));
         graph[0].add(new Edge(0, 3));
 
-        graph[1].add(new Edge(1,0,-1));
+        graph[1].add(new Edge(1, 0, -1));
+
+    }
+
+    //    BFS
+    public static void graphBFS(ArrayList<Edge>[] graph) {
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] visited = new boolean[graph.length];
+        queue.add(0);
+
+        while (!queue.isEmpty()) {
+            int ele = queue.remove();
+            if (!visited[ele]) {
+                System.out.print(ele);
+                visited[ele] = true;
+                for (int i = 0; i < graph[ele].size(); i++) {
+                    queue.add(graph[ele].get(i).destination);
+                }
+            }
+        }
+
+    }
+
+    //    BFS For Disconnected Graphs
+    public static void graphBFSDis(ArrayList<Edge>[] graph, boolean[] visited, int start) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
+
+        while (!queue.isEmpty()) {
+            int ele = queue.remove();
+            if (!visited[ele]) {
+                System.out.print(ele);
+                visited[ele] = true;
+                for (int i = 0; i < graph[ele].size(); i++) {
+                    queue.add(graph[ele].get(i).destination);
+                }
+            }
+        }
 
     }
 
@@ -41,6 +79,15 @@ public class GraphUtil {
         for (int i = 0; i < graph[0].size(); i++) {
             Edge edge = graph[0].get(i);
             System.out.println(edge.destination);
+        }
+
+        graphBFS(graph);
+
+        boolean[] visited = new boolean[graph.length];
+        for (int i = 0; i < graph.length; i++) {
+            if (!visited[i]) {
+                graphBFSDis(graph, visited, i);
+            }
         }
     }
 }
