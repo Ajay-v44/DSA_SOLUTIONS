@@ -71,6 +71,16 @@ public class GraphUtil {
 
     }
 
+    // Depth First Search
+    public static void graphDFS(ArrayList<Edge>[] graph, boolean[] visited, int current) {
+        System.out.println(current);
+        visited[current] = true;
+        for (int i = 0; i < graph[current].size(); i++) {
+            if (!visited[graph[current].get(i).destination])
+                graphDFS(graph, visited, graph[current].get(i).destination);
+        }
+    }
+
     public static void main(String[] args) {
         int V = 4;
         ArrayList<Edge>[] graph = new ArrayList[V];
@@ -87,6 +97,18 @@ public class GraphUtil {
         for (int i = 0; i < graph.length; i++) {
             if (!visited[i]) {
                 graphBFSDis(graph, visited, i);
+            }
+        }
+
+        System.out.println("=================   DFS   ===============");
+        boolean[] visited2 = new boolean[graph.length];
+        graphDFS(graph, visited2, 0);
+
+        System.out.println("=================   DFS (Disjoint Graph  ===============");
+
+        for (int i = 0; i < graph.length; i++) {
+            if (!visited2[i]) {
+                graphBFSDis(graph, visited2, i);
             }
         }
     }
