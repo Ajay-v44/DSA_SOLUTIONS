@@ -81,6 +81,22 @@ public class GraphUtil {
         }
     }
 
+    //    Detect Cycles In Graph
+    public static boolean findCycle(ArrayList<Edge>[] graph, boolean[] visited, boolean[] recursionStack, int current) {
+        visited[current] = true;
+        recursionStack[current] = true;
+        for (int i = 0; i < graph[current].size(); i++) {
+            Edge e=graph[current].get(i);
+            if(recursionStack[e.destination]){
+                return true;
+            }else if(!visited[e.destination]) {
+                findCycle(graph,visited,recursionStack,e.destination);
+            }
+        }
+        recursionStack[current] = false;
+        return false;
+    }
+
     public static void main(String[] args) {
         int V = 4;
         ArrayList<Edge>[] graph = new ArrayList[V];
@@ -111,5 +127,10 @@ public class GraphUtil {
                 graphBFSDis(graph, visited2, i);
             }
         }
+
+
+        System.out.println("=================   Cycle Detection in directed graph    ===============");
+        boolean[] visited3 = new boolean[graph.length], recursionStack = new boolean[graph.length];
+        System.out.println(findCycle(graph, visited3,recursionStack, 0));
     }
 }
