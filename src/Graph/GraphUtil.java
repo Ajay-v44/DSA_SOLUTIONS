@@ -3,6 +3,7 @@ package Graph;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class GraphUtil {
     public static class Edge {
@@ -30,7 +31,7 @@ public class GraphUtil {
         graph[0].add(new Edge(0, 2));
         graph[0].add(new Edge(0, 3));
 
-        graph[1].add(new Edge(1, 0, -1));
+        graph[1].add(new Edge(1, 3, -1));
 
     }
 
@@ -86,15 +87,41 @@ public class GraphUtil {
         visited[current] = true;
         recursionStack[current] = true;
         for (int i = 0; i < graph[current].size(); i++) {
-            Edge e=graph[current].get(i);
-            if(recursionStack[e.destination]){
+            Edge e = graph[current].get(i);
+            if (recursionStack[e.destination]) {
                 return true;
-            }else if(!visited[e.destination]) {
-                findCycle(graph,visited,recursionStack,e.destination);
+            } else if (!visited[e.destination]) {
+                if (findCycle(graph, visited, recursionStack, e.destination))
+                    return true;
             }
         }
         recursionStack[current] = false;
         return false;
+    }
+
+    public static void toplogicalSortingUtil(ArrayList<Edge>[] graph, boolean[] visited, int current, Stack<Integer> stack) {
+        visited[current] = true;
+        for (int i = 0; i < graph[current].size(); i++) {
+            Edge e = graph[current].get(i);
+            if (!visited[e.destination]) {
+                toplogicalSortingUtil(graph, visited, e.destination, stack);
+            }
+        }
+        stack.push(current);
+    }
+
+    public static  void toplogicalSorting(ArrayList<Edge>[] graph,int v){
+        Stack<Integer> stack = new Stack<>();
+        boolean[] visited = new boolean[graph.length];
+
+        for (int i = 0; i < v; i++) {
+            if(!visited[i])
+                toplogicalSortingUtil(graph,visited,i,stack);
+
+        }
+        while (!stack.isEmpty())
+            System.out.println(stack.pop());
+
     }
 
     public static void main(String[] args) {
@@ -131,6 +158,18 @@ public class GraphUtil {
 
         System.out.println("=================   Cycle Detection in directed graph    ===============");
         boolean[] visited3 = new boolean[graph.length], recursionStack = new boolean[graph.length];
-        System.out.println(findCycle(graph, visited3,recursionStack, 0));
+        for (int i = 0; i < V; i++) {
+            if (!visited3[i]) {
+                boolean isCycle = findCycle(graph, visited3, recursionStack, 0);
+                if (isCycle) {
+                    System.out.println("Cycle Exists");
+                    break;
+                }
+            }
+        }
+
+        System.out.println("=================   Topological Sorting    ===============");
+        toplogicalSorting(graph,V);
+
     }
 }
