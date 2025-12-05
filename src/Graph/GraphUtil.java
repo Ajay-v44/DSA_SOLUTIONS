@@ -82,7 +82,7 @@ public class GraphUtil {
         }
     }
 
-    //    Detect Cycles In Graph
+    //    Detect Cycles In Directed Graph
     public static boolean findCycle(ArrayList<Edge>[] graph, boolean[] visited, boolean[] recursionStack, int current) {
         visited[current] = true;
         recursionStack[current] = true;
@@ -124,7 +124,7 @@ public class GraphUtil {
 
     }
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         int V = 4;
         ArrayList<Edge>[] graph = new ArrayList[V];
         createGraphMan(graph);
