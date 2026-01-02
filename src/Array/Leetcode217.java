@@ -2,6 +2,7 @@ package Array;
 
 import java.util.HashSet;
 
+
 public class Leetcode217 {
     public boolean containsDuplicate(int[] nums) {
         if (nums == null || nums.length == 0)
