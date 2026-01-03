@@ -19,6 +19,7 @@ public class CouponCodeValidator {
                     businessLines.contains(businessLine[i].toLowerCase())) {
                 validCoupons.add(code[i]);
             }
+            
         }
         Collections.sort(validCoupons);
         return validCoupons;
