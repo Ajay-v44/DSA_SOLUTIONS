@@ -5,6 +5,7 @@ public class Leetcode70 {
 
     }
     static void main() {
+        
 
     }
 }
