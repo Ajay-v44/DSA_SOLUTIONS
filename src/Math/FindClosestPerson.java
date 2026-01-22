@@ -1,5 +1,6 @@
 package Math;
 
+
 public class FindClosestPerson {
     public static int findClosest(int x, int y, int z) {
 //        Absolute removes -ve value ensures result is always +ve
