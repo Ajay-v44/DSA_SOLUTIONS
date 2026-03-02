@@ -9,6 +9,7 @@ public class FindClosestPerson {
         if(d1<d2) return 1;
         if(d2<d1) return 2;
         return 0;
+        
     }
 
     public static void main(String[] args) {
