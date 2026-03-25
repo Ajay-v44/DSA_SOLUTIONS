@@ -1,0 +1,50 @@
+package PrefixOrSuffixSum;
+
+class Solution {
+    public static boolean canPartitionGrid(int[][] grid) {
+
+        int m = grid.length;
+        int n = grid[0].length;
+
+        long total = 0;
+
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                total += grid[i][j];
+
+        if (total % 2 != 0) return false;
+
+        long target = total / 2;
+
+        // horizontal cut
+        long sum = 0;
+        for (int i = 0; i < m - 1; i++) {
+            for (int j = 0; j < n; j++)
+                sum += grid[i][j];
+
+            if (sum == target) return true;
+        }
+
+        // vertical cut
+        sum = 0;
+        for (int j = 0; j < n - 1; j++) {
+            for (int i = 0; i < m; i++)
+                sum += grid[i][j];
+
+            if (sum == target) return true;
+        }
+
+        return false;
+    }
+
+    static void main() {
+        int[][] matrix = {{
+                1, 2, 3
+        },
+                {
+                        3, 4, 5
+                }};
+
+        System.out.println(canPartitionGrid(matrix));
+    }
+}
