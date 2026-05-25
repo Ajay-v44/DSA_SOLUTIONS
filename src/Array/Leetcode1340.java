@@ -40,6 +40,6 @@ public class Leetcode1340 {
     }
 
     static void main() {
-        
+
     }
 }
