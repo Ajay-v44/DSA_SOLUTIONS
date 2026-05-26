@@ -27,6 +27,6 @@ public class Leetcode1871 {
     }
 
     static void main() {
-        
+
     }
 }
