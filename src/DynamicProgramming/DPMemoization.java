@@ -3,6 +3,7 @@ package DynamicProgramming;
 import java.util.Arrays;
 
 public class DPMemoization {
+//     recursion + memoization (top-down)
 
     int[][] matrix = new int[1000][5000];
 

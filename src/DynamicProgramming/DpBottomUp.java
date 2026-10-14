@@ -1,6 +1,7 @@
 package DynamicProgramming;
 
-public class DpTopDown {
+public class DpBottomUp {
+//    iterative table-filling (bottom-up)
     public static int dp(int[] wt, int[] val, int W, int n) {
         int[][] matrics = new int[n + 1][W + 1];
 
