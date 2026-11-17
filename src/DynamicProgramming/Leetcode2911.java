@@ -45,5 +45,6 @@ public class Leetcode2911 {
 
     static void main() {
         System.out.println(minimumChanges("abcac",2));
+        
     }
 }
