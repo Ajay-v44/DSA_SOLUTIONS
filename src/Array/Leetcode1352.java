@@ -23,10 +23,6 @@ public class Leetcode1352 {
             i-=1;
             moves+=1;
         }
-//        for (int i = list.size() - 1; i >= 0; i--) {
-//            System.out.println(list.get(i));
-//            prod *= list.get(i);
-//        }
         return prod;
     }
 
